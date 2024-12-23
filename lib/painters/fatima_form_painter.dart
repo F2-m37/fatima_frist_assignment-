@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 class FatimaFormPainter extends CustomPainter {
+  final bool isDarkMode;
+
+  FatimaFormPainter({required this.isDarkMode});
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()

@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:math' as math;
+import '../controllers/theme_controller.dart';
 
 class FatimaContainerPainter extends CustomPainter {
+  final themeController = Get.find<ThemeController>();
+
   @override
   void paint(Canvas canvas, Size size) {
     final mainPaint = Paint()
-      ..shader = const LinearGradient(
+      ..shader = LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        stops: [0.0, 0.3, 0.7, 1.0],
-        colors: [
-          Color(0XFF7BA3E0),
-          Color(0XFF628ECB),
-          Color(0XFF4B6FA3),
-          Color(0XFF395886),
-        ],
+        stops: const [0.0, 0.3, 0.7, 1.0],
+        colors: themeController.gradientColors,
       ).createShader(Offset.zero & size)
       ..style = PaintingStyle.fill;
 
@@ -153,5 +152,5 @@ class FatimaContainerPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
